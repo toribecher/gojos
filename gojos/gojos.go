@@ -33,10 +33,10 @@ func (a *App) Initialize() {
 
 func (a *App) initializeRoutes() {
 	a.Router.HandleFunc("/get/{png}", getPNG).Methods("GET")
-	a.Router.HandleFunc("/capturama", uploadPNG).Methods("POST")
+	a.Router.HandleFunc("/capturama", downloadPNG).Methods("POST")
 }
 
-func uploadPNG(w http.ResponseWriter, r *http.Request) {
+func downloadPNG(w http.ResponseWriter, r *http.Request) {
 	url := r.FormValue("url")
 	dynamicSizeSelector := r.FormValue("dynamic_size_selector")
 	fmt.Println(url)
