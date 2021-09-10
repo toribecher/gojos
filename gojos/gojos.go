@@ -39,7 +39,7 @@ func getPNG(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	png := params["png"]
 
-	pngPath := fmt.Sprintf("./uploads/%s.png", png)
+	pngPath := fmt.Sprintf("./uploads/%s", png)
 	pngImage, err := getImageFromFilePath(pngPath)
 	if err != nil {
 		http.Error(w, "The png extension cannot be found", http.StatusNotFound)
