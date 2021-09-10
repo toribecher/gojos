@@ -32,7 +32,15 @@ func (a *App) Initialize() {
 }
 
 func (a *App) initializeRoutes() {
-	a.Router.HandleFunc("/getPNG/{png}", getPNG).Methods("GET")
+	a.Router.HandleFunc("/get/{png}", getPNG).Methods("GET")
+	a.Router.HandleFunc("/capturama", uploadPNG).Methods("POST")
+}
+
+func uploadPNG(w http.ResponseWriter, r *http.Request) {
+	url := r.FormValue("url")
+	dynamicSizeSelector := r.FormValue("dynamic_size_selector")
+	fmt.Println(url)
+	fmt.Println(dynamicSizeSelector)
 }
 
 func getPNG(w http.ResponseWriter, r *http.Request) {
